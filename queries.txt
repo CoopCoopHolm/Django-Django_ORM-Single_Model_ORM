@@ -1,0 +1,28 @@
+>>> Users.objects.create(first_name = "Josh", last_name = "Person", email = "josh.person.gmail.com", age = 123)
+<Users: Users object (1)>
+>>> Users.objects.create(first_name = "Jack", last_name = "Fish", email = "jack.fish.gmail.com", age = 3971)
+<Users: Users object (2)>
+>>> Users.objects.create(first_name = "Jog", last_name = "Dog", email = "jog.dog.gmail.com", age = 2)
+<Users: Users object (3)>
+
+>>> Users.objects.all()
+<QuerySet [<Users: Users object (1)>, <Users: Users object (2)>, <Users: Users object (3)>]>
+
+>>> Users.objects.last()
+<Users: Users object (3)>
+
+>>> Users.objects.first()
+<Users: Users object (1)>
+
+>>> c = Users.objects.get(id=3)
+>>> c.last_name = "Pancakes"
+
+>>> d = Users.objects.get(id=2)
+>>> d.delete()
+(1, {'users_app.Users': 1})
+
+>>> Users.objects.all().order_by("first_name")
+<QuerySet [<Users: Users object (3)>, <Users: Users object (1)>]>
+
+>>> Users.objects.all().order_by("-first_name")
+<QuerySet [<Users: Users object (1)>, <Users: Users object (3)>]>
